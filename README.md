@@ -1,10 +1,20 @@
 # Auto Fi Coding Challenge
 
-This application provides following functionalities
+This appliocation provides the functioanlity of uploading vehicles data from CSV file into SQLite database.
+After downloading code
+
+- Use following command to add dependencies
+  npm install
+
+- Use following command to run server
+  node app.js
+
+This application support following API calls
 
 ## Get "/"
 
-    Get call to root "/" provides a html page. This html page has GUI which can be used for uploading vehicle data "CSV" file.
+    Get call to root "/" returns a html page.
+    This html page provide GUI, which can be used for uploading file.
 
 ## Post "/upload"
 
@@ -13,26 +23,32 @@ This application provides following functionalities
     - **companyName**  Name of company or data provider
     - **uploadFile**  An object containing uploaded file data
 
-      This call converts the CSV data in JSON format. Then this JSON format is given to database module along with "comapnyName".
-      Database module store data in SQLite database file.
-      Database module open database of company name ( i.e. if given name is "autofi", then it will create database of name "autofi.db").
-      If database do not exist the it will create a new database of this name and creat a table of "vehicles". The format of table is as follows
+        This call converts the CSV data in JSON format.
+        Then this JSON format is given to database module along with "comapnyName".
+        Database module store data in SQLite database file.
 
-      Table : vehicles
+        Database module open/create database of company name
+        ( i.e. if given name is "autofi", then it will create database of name "autofi.db").
+        If database do not exist the it will create a new database of this name.
+        and create a table of "vehicles".
 
-            Column name         Column Type
-            ----------------------------------------
-            uuid                text            primary key
-            vin                 text
-            make                text
-            model               text
-            mileage             text
-            year                integer
-            price               integer
-            zipcode             text
-            createdate          date
-            updatedate          date
+        The format of "vehicles" table is as follows
 
-      In given file user can have less of more columna but uui is primary key of table so it must be present in input data.
+        Table : vehicles
 
-      API return a JSON object telling uploading is successful or fail.
+                Column name         Column Type
+                ----------------------------------------
+                uuid                text            primary key
+                vin                 text
+                make                text
+                model               text
+                mileage             text
+                year                integer
+                price               integer
+                zipcode             text
+                createdate          date
+                updatedate          date
+
+        "uuid" is primary key so it must be present in provied file.
+
+        API return a JSON object telling whether uploading is successful or fail.
