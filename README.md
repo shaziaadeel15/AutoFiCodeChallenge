@@ -4,11 +4,11 @@ This appliocation provides the functioanlity of uploading vehicles data from CSV
 After downloading code
 
 - Use following command to add dependencies
-  npm install
+  "npm install"
 
 - Use following command to run server
-  node app.js
-
+  "node app.js"
+  
 This application support following API calls
 
 ## Get "/"
